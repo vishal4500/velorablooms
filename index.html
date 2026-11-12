@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Velora Blooms — Indore's Premium Flower Experience</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F5F0E8;
+    --deep-cream: #EDE6D6;
+    --burgundy: #6B1A1A;
+    --rose: #8B2635;
+    --gold: #C9A84C;
+    --gold-light: #E8D5A3;
+    --dark: #1A0F0F;
+    --text-muted: #7A6A5A;
+    --white: #FEFEFE;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Jost', sans-serif; background: var(--cream); color: var(--dark); overflow-x: hidden; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    padding: 20px 48px;
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(245,240,232,0.93);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+    transition: all 0.3s ease;
+  }
+  .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; letter-spacing: 3px; color: var(--burgundy); text-decoration: none; }
+  .nav-logo span { color: var(--gold); }
+  .nav-links { display: flex; gap: 40px; list-style: none; }
+  .nav-links a { font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--dark); text-decoration: none; font-weight: 400; transition: color 0.3s; }
+  .nav-links a:hover { color: var(--burgundy); }
+  .nav-cta { background: var(--burgundy); color: var(--cream); padding: 10px 24px; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; transition: all 0.3s; border: 1px solid var(--burgundy); }
+  .nav-cta:hover { background: transparent; color: var(--burgundy); }
+
+  /* HERO */
+  #home { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; padding-top: 80px; overflow: hidden; }
+  .hero-left { display: flex; flex-direction: column; justify-content: center; padding: 80px 64px 80px 72px; position: relative; }
+  .hero-eyebrow { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 24px; display: flex; align-items: center; gap: 16px; }
+  .hero-eyebrow::before { content: ''; display: block; width: 40px; height: 1px; background: var(--gold); }
+  .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(52px, 6vw, 84px); font-weight: 300; line-height: 1.05; color: var(--dark); margin-bottom: 28px; }
+  .hero-title em { font-style: italic; color: var(--burgundy); }
+  .hero-desc { font-size: 14px; line-height: 1.9; color: var(--text-muted); max-width: 380px; margin-bottom: 48px; font-weight: 300; }
+  .hero-actions { display: flex; gap: 16px; align-items: center; }
+  .btn-primary { background: var(--burgundy); color: var(--cream); padding: 16px 36px; font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; text-decoration: none; transition: all 0.4s; display: inline-block; border: 1px solid var(--burgundy); }
+  .btn-primary:hover { background: var(--dark); border-color: var(--dark); }
+  .btn-secondary { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--burgundy); text-decoration: none; display: flex; align-items: center; gap: 10px; transition: gap 0.3s; }
+  .btn-secondary:hover { gap: 16px; }
+  .btn-secondary::after { content: '→'; }
+  .hero-stats { display: flex; gap: 40px; margin-top: 64px; padding-top: 40px; border-top: 1px solid rgba(201,168,76,0.25); }
+  .stat-number { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 300; color: var(--burgundy); line-height: 1; }
+  .stat-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); margin-top: 4px; }
+  .hero-right { position: relative; background: var(--dark); overflow: hidden; }
+  .hero-img-container { width: 100%; height: 100%; position: relative; }
+  .hero-img-container img { width: 100%; height: 100%; object-fit: cover; opacity: 0.9; animation: slowZoom 8s ease-out forwards; }
+  @keyframes slowZoom { from { transform: scale(1.08); } to { transform: scale(1.0); } }
+  .hero-img-overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(26,15,15,0.65) 0%, transparent 60%); padding: 40px; }
+  .hero-img-tag { display: inline-block; background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.4); color: var(--gold-light); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; padding: 8px 20px; }
+
+  /* ABOUT STRIP */
+  #about { background: var(--dark); padding: 80px 72px; display: grid; grid-template-columns: 1fr 2px 1fr 2px 1fr; gap: 0; align-items: center; }
+  .about-divider { background: rgba(201,168,76,0.2); height: 80px; }
+  .about-item { padding: 0 56px; text-align: center; }
+  .about-icon { font-size: 28px; margin-bottom: 16px; display: block; }
+  .about-item-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; color: var(--cream); margin-bottom: 10px; }
+  .about-item-desc { font-size: 12px; line-height: 1.8; color: rgba(245,240,232,0.5); font-weight: 300; }
+
+  /* SECTION COMMON */
+  section { padding: 120px 72px; }
+  .section-label { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; display: flex; align-items: center; gap: 16px; }
+  .section-label::before { content: ''; display: block; width: 30px; height: 1px; background: var(--gold); }
+  .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(38px, 4vw, 56px); font-weight: 300; line-height: 1.1; color: var(--dark); margin-bottom: 20px; }
+  .section-title em { font-style: italic; color: var(--burgundy); }
+  .section-subtitle { font-size: 14px; line-height: 1.9; color: var(--text-muted); font-weight: 300; max-width: 520px; }
+
+  /* SHOP */
+  #shop { background: var(--white); }
+  .shop-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 64px; }
+  .shop-filter { display: flex; gap: 8px; }
+  .filter-btn { padding: 8px 20px; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; border: 1px solid var(--gold-light); background: transparent; color: var(--text-muted); cursor: pointer; transition: all 0.3s; font-family: 'Jost', sans-serif; }
+  .filter-btn.active, .filter-btn:hover { background: var(--burgundy); color: var(--cream); border-color: var(--burgundy); }
+  .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+  .product-card { background: var(--cream); position: relative; overflow: hidden; cursor: pointer; transition: transform 0.4s ease; }
+  .product-card:hover { transform: translateY(-4px); }
+  .product-card:hover .product-img { transform: scale(1.06); }
+  .product-img-wrap { height: 360px; overflow: hidden; position: relative; background: var(--dark); }
+  .product-img { width: 100%; height: 100%; object-fit: cover; opacity: 0.92; transition: transform 0.6s ease; }
+  .product-badge { position: absolute; top: 20px; left: 20px; background: var(--gold); color: var(--dark); font-size: 9px; letter-spacing: 2px; text-transform: uppercase; padding: 5px 12px; }
+  .product-info { padding: 28px 28px 32px; }
+  .product-category { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+  .product-name { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; color: var(--dark); margin-bottom: 8px; line-height: 1.2; }
+  .product-desc { font-size: 12px; color: var(--text-muted); line-height: 1.7; margin-bottom: 20px; font-weight: 300; }
+  .product-footer { display: flex; align-items: center; justify-content: space-between; }
+  .product-price { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 400; color: var(--burgundy); }
+  .product-price span { font-family: 'Jost', sans-serif; font-size: 11px; color: var(--text-muted); font-weight: 300; margin-right: 2px; }
+  .product-order { background: var(--dark); color: var(--cream); padding: 10px 20px; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; transition: background 0.3s; display: inline-block; }
+  .product-order:hover { background: var(--burgundy); }
+  .product-card.featured { grid-column: span 2; }
+  .product-card.featured .product-img-wrap { height: 440px; }
+
+  /* GALLERY */
+  #gallery { background: var(--deep-cream); padding: 120px 72px; }
+  .gallery-header { margin-bottom: 56px; }
+  .gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 3px; }
+  .gallery-item { overflow: hidden; position: relative; background: var(--cream); height: 250px; }
+  .gallery-item:nth-child(1) { grid-column: span 2; height: 300px; }
+  .gallery-item:nth-child(5) { grid-column: span 2; height: 300px; }
+  .gallery-img { width: 100%; height: 100%; object-fit: cover; opacity: 0.9; transition: transform 0.6s ease, opacity 0.4s; display: block; }
+  .gallery-item:hover .gallery-img { transform: scale(1.05); opacity: 1; }
+  .gallery-item:hover .gallery-hover { opacity: 1; }
+  .gallery-hover { position: absolute; inset: 0; background: rgba(107,26,26,0.28); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.4s; }
+  .gallery-hover-text { font-family: 'Cormorant Garamond', serif; font-size: 14px; letter-spacing: 3px; text-transform: uppercase; color: var(--cream); font-style: italic; }
+
+  /* CONTACT */
+  #contact { background: var(--dark); padding: 120px 72px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .contact-left .section-label { color: var(--gold); }
+  .contact-left .section-title { color: var(--cream); }
+  .contact-left .section-subtitle { color: rgba(245,240,232,0.5); }
+  .contact-channels { margin-top: 48px; display: flex; flex-direction: column; gap: 20px; }
+  .contact-channel { display: flex; align-items: center; gap: 20px; padding: 20px 24px; border: 1px solid rgba(201,168,76,0.2); text-decoration: none; transition: border-color 0.3s, background 0.3s; background: rgba(255,255,255,0.02); }
+  .contact-channel:hover { border-color: rgba(201,168,76,0.5); background: rgba(201,168,76,0.05); }
+  .channel-icon { width: 44px; height: 44px; background: rgba(201,168,76,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+  .channel-label { font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+  .channel-value { font-family: 'Cormorant Garamond', serif; font-size: 18px; color: var(--cream); font-weight: 300; }
+  .channel-arrow { margin-left: auto; color: var(--gold); font-size: 18px; transition: transform 0.3s; }
+  .contact-channel:hover .channel-arrow { transform: translateX(6px); }
+  .contact-right { padding: 48px; background: rgba(255,255,255,0.03); border: 1px solid rgba(201,168,76,0.15); }
+  .contact-right-title { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 300; color: var(--cream); margin-bottom: 8px; }
+  .contact-right-sub { font-size: 12px; color: rgba(245,240,232,0.4); margin-bottom: 32px; font-weight: 300; line-height: 1.7; }
+  .delivery-areas { margin-top: 32px; }
+  .delivery-title { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+  .area-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .area-tag { padding: 6px 16px; border: 1px solid rgba(201,168,76,0.2); font-size: 11px; color: rgba(245,240,232,0.5); letter-spacing: 1px; }
+  .order-form { display: flex; flex-direction: column; gap: 16px; }
+  .form-field { display: flex; flex-direction: column; gap: 8px; }
+  .form-label { font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(245,240,232,0.4); }
+  .form-select, .form-input, .form-textarea { background: rgba(255,255,255,0.04); border: 1px solid rgba(201,168,76,0.2); color: var(--cream); padding: 14px 16px; font-family: 'Jost', sans-serif; font-size: 13px; font-weight: 300; outline: none; width: 100%; transition: border-color 0.3s; -webkit-appearance: none; }
+  .form-select:focus, .form-input:focus, .form-textarea:focus { border-color: rgba(201,168,76,0.5); }
+  .form-select option { background: var(--dark); }
+  .form-textarea { height: 90px; resize: none; }
+  .form-submit { background: var(--gold); color: var(--dark); padding: 16px; font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; border: none; cursor: pointer; font-family: 'Jost', sans-serif; font-weight: 500; transition: background 0.3s; margin-top: 8px; }
+  .form-submit:hover { background: var(--gold-light); }
+
+  /* FOOTER */
+  footer { background: var(--dark); border-top: 1px solid rgba(201,168,76,0.1); padding: 32px 72px; display: flex; align-items: center; justify-content: space-between; }
+  .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 500; letter-spacing: 3px; color: var(--cream); }
+  .footer-logo span { color: var(--gold); }
+  .footer-copy { font-size: 10px; letter-spacing: 1.5px; color: rgba(245,240,232,0.25); text-transform: uppercase; }
+  .footer-social { display: flex; gap: 20px; }
+  .social-link { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: rgba(245,240,232,0.3); text-decoration: none; transition: color 0.3s; }
+  .social-link:hover { color: var(--gold); }
+
+  /* WHATSAPP FLOAT */
+  .wa-float { position: fixed; bottom: 32px; right: 32px; z-index: 200; width: 56px; height: 56px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 26px; box-shadow: 0 8px 32px rgba(37,211,102,0.3); transition: transform 0.3s; animation: waPulse 2.5s ease-in-out infinite; }
+  .wa-float:hover { transform: scale(1.1); animation: none; }
+  @keyframes waPulse { 0%,100% { box-shadow: 0 8px 32px rgba(37,211,102,0.3); } 50% { box-shadow: 0 8px 48px rgba(37,211,102,0.55); } }
+
+  /* ANIMATIONS */
+  .fade-up { opacity: 0; transform: translateY(32px); transition: opacity 0.8s ease, transform 0.8s ease; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  /* MOBILE */
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    #home { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 100px 24px 48px; }
+    .hero-right { height: 50vh; }
+    .hero-stats { gap: 24px; }
+    section { padding: 80px 24px; }
+    #about { grid-template-columns: 1fr; padding: 60px 24px; }
+    .about-item { padding: 32px 0; border-bottom: 1px solid rgba(201,168,76,0.1); }
+    .about-divider { display: none; }
+    .shop-header { flex-direction: column; gap: 24px; align-items: flex-start; }
+    .products-grid { grid-template-columns: 1fr; }
+    .product-card.featured { grid-column: span 1; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; }
+    .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 1; }
+    .gallery-item:nth-child(5) { grid-column: span 2; }
+    #contact { grid-template-columns: 1fr; gap: 48px; padding: 80px 24px; }
+    .contact-right { padding: 32px 24px; }
+    footer { flex-direction: column; gap: 20px; text-align: center; padding: 32px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#home" class="nav-logo">VELORA <span>✦</span> BLOOMS</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#shop">Shop</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="https://wa.me/919179139868?text=Hi%20Velora%20Blooms!%20I%27d%20like%20to%20place%20an%20order." class="nav-cta" target="_blank">Order Now</a>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Indore's Finest Floral Experience</div>
+    <h1 class="hero-title">Where every<br>bloom tells a<br><em>story.</em></h1>
+    <p class="hero-desc">Premium rose bouquets in our signature transparent bags, crafted for moments that deserve more than ordinary flowers. Delivered across Indore, same day.</p>
+    <div class="hero-actions">
+      <a href="#shop" class="btn-primary">Explore Collection</a>
+      <a href="https://wa.me/919179139868?text=Hi%20Velora%20Blooms!%20I%27d%20like%20to%20place%20an%20order." class="btn-secondary" target="_blank">Order on WhatsApp</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item"><div class="stat-number">500+</div><div class="stat-label">Moments Created</div></div>
+      <div class="stat-item"><div class="stat-number">2</div><div class="stat-label">Signature Designs</div></div>
+      <div class="stat-item"><div class="stat-number">1–3hr</div><div class="stat-label">Same Day Delivery</div></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-img-container">
+      <img id="heroImg" src="hero.png" alt="Velora Blooms signature bouquet" />
+      <div class="hero-img-overlay">
+        <span class="hero-img-tag">Indore Exclusive · Handcrafted Daily</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<div id="about">
+  <div class="about-item fade-up">
+    <span class="about-icon">🌹</span>
+    <div class="about-item-title">Fresh Daily</div>
+    <div class="about-item-desc">Every bouquet is crafted fresh on the day of delivery. No cold storage. No compromises.</div>
+  </div>
+  <div class="about-divider"></div>
+  <div class="about-item fade-up">
+    <span class="about-icon">✦</span>
+    <div class="about-item-title">Signature Packaging</div>
+    <div class="about-item-desc">Our iconic transparent bag with branded ribbon is the gift before the gift. Photograph-worthy, always.</div>
+  </div>
+  <div class="about-divider"></div>
+  <div class="about-item fade-up">
+    <span class="about-icon">🚗</span>
+    <div class="about-item-title">Indore Delivery</div>
+    <div class="about-item-desc">Same-day delivery across Vijay Nagar, Palasia, Scheme 78, AB Road and all major areas in Indore.</div>
+  </div>
+</div>
+
+<!-- SHOP -->
+<section id="shop">
+  <div class="shop-header">
+    <div>
+      <div class="section-label">Our Collection</div>
+      <h2 class="section-title">Choose your <em>moment</em></h2>
+      <p class="section-subtitle">Two signature designs. Premium hamper options. Every occasion covered.</p>
+    </div>
+    <div class="shop-filter">
+      <button class="filter-btn active" onclick="filterProducts('all',this)">All</button>
+      <button class="filter-btn" onclick="filterProducts('large',this)">Large Bag</button>
+      <button class="filter-btn" onclick="filterProducts('small',this)">Small Bag</button>
+    </div>
+  </div>
+
+  <div class="products-grid" id="productsGrid">
+
+    <div class="product-card featured fade-up" data-type="large">
+      <div class="product-img-wrap">
+        <img class="product-img" id="p1img" src="photo1.png" alt="The Velora Classic" />
+        <span class="product-badge">Bestseller</span>
+      </div>
+      <div class="product-info">
+        <div class="product-category">Large Bag · Signature</div>
+        <div class="product-name">The Velora Classic</div>
+        <div class="product-desc">25 premium long-stem red roses in our signature large transparent bag with cream branded ribbon. The original. The iconic.</div>
+        <div class="product-footer">
+          <div class="product-price"><span>₹</span>2,499</div>
+          <a href="https://wa.me/919179139868?text=Hi!%20I%20want%20to%20order%20The%20Velora%20Classic%20(₹2499)" class="product-order" target="_blank">Order via WhatsApp</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card fade-up" data-type="small">
+      <div class="product-img-wrap">
+        <img class="product-img" id="p2img" src="photo2.png" alt="The Velora Petite" />
+      </div>
+      <div class="product-info">
+        <div class="product-category">Small Bag · Signature</div>
+        <div class="product-name">The Velora Petite</div>
+        <div class="product-desc">12 premium red roses in our compact signature bag with red branded ribbon. Perfect for everyday love.</div>
+        <div class="product-footer">
+          <div class="product-price"><span>₹</span>1,499</div>
+          <a href="https://wa.me/919179139868?text=Hi!%20I%20want%20to%20order%20The%20Velora%20Petite%20(₹1499)" class="product-order" target="_blank">Order via WhatsApp</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card fade-up" data-type="large">
+      <div class="product-img-wrap">
+        <img class="product-img" id="p3img" src="photo3.png" alt="The Grand Romance" />
+      </div>
+      <div class="product-info">
+        <div class="product-category">Large Bag · Hamper</div>
+        <div class="product-name">The Grand Romance</div>
+        <div class="product-desc">Large Velora bag + Ferrero Rocher (16 pcs) + luxury rose scented candle + premium handwritten card.</div>
+        <div class="product-footer">
+          <div class="product-price"><span>₹</span>3,499</div>
+          <a href="https://wa.me/919179139868?text=Hi!%20I%20want%20to%20order%20The%20Grand%20Romance%20(₹3499)" class="product-order" target="_blank">Order via WhatsApp</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card fade-up" data-type="small">
+      <div class="product-img-wrap">
+        <img class="product-img" id="p4img" src="photo4.png" alt="The Birthday Surprise" />
+      </div>
+      <div class="product-info">
+        <div class="product-category">Small Bag · Hamper</div>
+        <div class="product-name">The Birthday Surprise</div>
+        <div class="product-desc">Small Velora bag + mini Belgian chocolates + gold balloon + premium birthday card.</div>
+        <div class="product-footer">
+          <div class="product-price"><span>₹</span>2,199</div>
+          <a href="https://wa.me/919179139868?text=Hi!%20I%20want%20to%20order%20The%20Birthday%20Surprise%20(₹2199)" class="product-order" target="_blank">Order via WhatsApp</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card fade-up" data-type="large">
+      <div class="product-img-wrap">
+        <img class="product-img" id="p5img" src="photo5.png" alt="The Luxury Spa Moment" />
+      </div>
+      <div class="product-info">
+        <div class="product-category">Large Bag · Hamper</div>
+        <div class="product-name">The Luxury Spa Moment</div>
+        <div class="product-desc">Large Velora bag + premium bath bomb set + body mist + scented candle. Because she deserves an evening of luxury.</div>
+        <div class="product-footer">
+          <div class="product-price"><span>₹</span>3,799</div>
+          <a href="https://wa.me/919179139868?text=Hi!%20I%20want%20to%20order%20The%20Luxury%20Spa%20Moment%20(₹3799)" class="product-order" target="_blank">Order via WhatsApp</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card fade-up" data-type="small">
+      <div class="product-img-wrap">
+        <img class="product-img" id="p6img" src="photo6.png" alt="The Sweet Love" />
+      </div>
+      <div class="product-info">
+        <div class="product-category">Small Bag · Hamper</div>
+        <div class="product-name">The Sweet Love</div>
+        <div class="product-desc">Small Velora bag + Ferrero Rocher (4 pcs) + scented candle + ribbon card. Romance in a perfect package.</div>
+        <div class="product-footer">
+          <div class="product-price"><span>₹</span>2,499</div>
+          <a href="https://wa.me/919179139868?text=Hi!%20I%20want%20to%20order%20The%20Sweet%20Love%20(₹2499)" class="product-order" target="_blank">Order via WhatsApp</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card featured fade-up" data-type="large">
+      <div class="product-img-wrap">
+        <img class="product-img" id="p7img" src="photo7.png" alt="The Velora Royal" />
+        <span class="product-badge" style="background:var(--gold);color:var(--dark);">👑 Royal</span>
+      </div>
+      <div class="product-info">
+        <div class="product-category">Large Bag · Premium Hamper</div>
+        <div class="product-name">The Velora Royal</div>
+        <div class="product-desc">Our most luxurious offering. Large Velora bag + Ferrero Rocher (16 pcs) + luxury perfume (50ml) + premium scented candle + gold tissue wrap + handwritten card. When only the absolute best will do.</div>
+        <div class="product-footer">
+          <div class="product-price"><span>₹</span>5,499</div>
+          <a href="https://wa.me/919179139868?text=Hi!%20I%20want%20to%20order%20The%20Velora%20Royal%20(₹5499)" class="product-order" target="_blank">Order via WhatsApp</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card fade-up" data-type="small">
+      <div class="product-img-wrap">
+        <img class="product-img" id="p8img" src="photo8.png" alt="The Mini Royal" />
+        <span class="product-badge">Mini Royal</span>
+      </div>
+      <div class="product-info">
+        <div class="product-category">Small Bag · Premium Hamper</div>
+        <div class="product-name">The Mini Royal</div>
+        <div class="product-desc">Small Velora bag + Ferrero Rocher (8 pcs) + mini scented candle + body mist + premium gold card.</div>
+        <div class="product-footer">
+          <div class="product-price"><span>₹</span>3,299</div>
+          <a href="https://wa.me/919179139868?text=Hi!%20I%20want%20to%20order%20The%20Mini%20Royal%20(₹3299)" class="product-order" target="_blank">Order via WhatsApp</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="gallery-header">
+    <div class="section-label">Gallery</div>
+    <h2 class="section-title">Moments worth <em>remembering.</em></h2>
+    <p class="section-subtitle">Every Velora bag creates a memory. Here are some of our favourite ones.</p>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-item"><img class="gallery-img" id="g1" src="" alt="Velora Blooms" /><div class="gallery-hover"><span class="gallery-hover-text">Velora Blooms</span></div></div>
+    <div class="gallery-item"><img class="gallery-img" id="g2" src="" alt="Velora Blooms" /><div class="gallery-hover"><span class="gallery-hover-text">Signature Bag</span></div></div>
+    <div class="gallery-item"><img class="gallery-img" id="g3" src="" alt="Velora Blooms" /><div class="gallery-hover"><span class="gallery-hover-text">Red Ribbon</span></div></div>
+    <div class="gallery-item"><img class="gallery-img" id="g4" src="" alt="Velora Blooms" /><div class="gallery-hover"><span class="gallery-hover-text">Cream Ribbon</span></div></div>
+    <div class="gallery-item"><img class="gallery-img" id="g5" src="" alt="Velora Blooms" /><div class="gallery-hover"><span class="gallery-hover-text">Pure Luxury</span></div></div>
+    <div class="gallery-item"><img class="gallery-img" id="g6" src="" alt="Velora Blooms" /><div class="gallery-hover"><span class="gallery-hover-text">Handcrafted</span></div></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-left">
+    <div class="section-label">Get in Touch</div>
+    <h2 class="section-title" style="font-size:clamp(32px,3.5vw,50px);">Order your<br><em>Velora moment</em></h2>
+    <p class="section-subtitle">We deliver across Indore, same day. Order before 4 PM for guaranteed same-day delivery.</p>
+    <div class="contact-channels">
+      <a href="https://wa.me/919179139868?text=Hi%20Velora%20Blooms!%20I%27d%20like%20to%20place%20an%20order." class="contact-channel" target="_blank">
+        <div class="channel-icon">📱</div>
+        <div class="channel-info"><div class="channel-label">WhatsApp Orders</div><div class="channel-value">+91 91791 39868</div></div>
+        <div class="channel-arrow">→</div>
+      </a>
+      <a href="https://instagram.com/velorablooms" class="contact-channel" target="_blank">
+        <div class="channel-icon">📸</div>
+        <div class="channel-info"><div class="channel-label">Instagram</div><div class="channel-value">@velorablooms</div></div>
+        <div class="channel-arrow">→</div>
+      </a>
+      <a href="tel:+919179139868" class="contact-channel">
+        <div class="channel-icon">📞</div>
+        <div class="channel-info"><div class="channel-label">Call Us</div><div class="channel-value">+91 91791 39868</div></div>
+        <div class="channel-arrow">→</div>
+      </a>
+    </div>
+    <div class="delivery-areas" style="margin-top:40px;">
+      <div class="delivery-title">Delivery</div>
+      <div class="area-tags">
+        <span class="area-tag">🚗 All Over Indore</span>
+      </div>
+    </div>
+  </div>
+  <div class="contact-right">
+    <div class="contact-right-title">Send an Enquiry</div>
+    <div class="contact-right-sub">Fill this form and we'll reach out on WhatsApp within 15 minutes to confirm your order.</div>
+    <div class="order-form">
+      <div class="form-field"><label class="form-label">Your Name</label><input class="form-input" type="text" placeholder="Enter your name" /></div>
+      <div class="form-field"><label class="form-label">WhatsApp Number</label><input class="form-input" type="tel" placeholder="+91 XXXXX XXXXX" /></div>
+      <div class="form-field">
+        <label class="form-label">Select Product</label>
+        <select class="form-select">
+          <option value="">Choose your Velora...</option>
+          <optgroup label="Large Bag">
+            <option>The Velora Classic — ₹2,499</option>
+            <option>The Grand Romance — ₹3,499</option>
+            <option>The Luxury Spa Moment — ₹3,799</option>
+            <option>The Velora Royal 👑 — ₹5,499</option>
+          </optgroup>
+          <optgroup label="Small Bag">
+            <option>The Velora Petite — ₹1,499</option>
+            <option>The Birthday Surprise — ₹2,199</option>
+            <option>The Sweet Love — ₹2,499</option>
+            <option>The Mini Royal — ₹3,299</option>
+          </optgroup>
+        </select>
+      </div>
+      <div class="form-field"><label class="form-label">Delivery Area & Message</label><textarea class="form-textarea" placeholder="Your delivery area in Indore + any special message..."></textarea></div>
+      <button class="form-submit" onclick="submitForm()">Send Enquiry via WhatsApp →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">VELORA <span>✦</span> BLOOMS</div>
+  <div class="footer-copy">© 2025 Velora Blooms · velorablooms.in · All Rights Reserved</div>
+  <div class="footer-social">
+    <a href="https://instagram.com/velorablooms" class="social-link" target="_blank">Instagram</a>
+    <a href="https://wa.me/919179139868" class="social-link" target="_blank">WhatsApp</a>
+  </div>
+</footer>
+
+<a href="https://wa.me/919179139868?text=Hi%20Velora%20Blooms!%20I%27d%20like%20to%20place%20an%20order." class="wa-float" target="_blank" title="Order on WhatsApp">💬</a>
+
+<script>
+// ── Load images from uploaded files ──
+const imageFiles = [
+  // Map all uploaded images in order
+  // They are available via window.fs in the Claude artifact environment
+];
+
+// Since we're in an artifact, we load the images from the page context
+// Images are passed as base64 via the embedding mechanism
+// We'll use the img src approach with the uploaded file references
+
+async function loadImages() {
+  const imgMap = {
+    heroImg:  '1000303708.webp',  // Image 1 — spa hamper at fountain (hero)
+    p1img:    '1000303708.webp',  // Classic — same hero
+    p2img:    '1000299142.png',   // Petite — car shot
+    p3img:    '1000303708.webp',  // Grand Romance
+    p4img:    '1000299142.png',   // Birthday
+    p5img:    '1000303708.webp',  // Spa Moment
+    p6img:    '1000299142.png',   // Sweet Love
+    p7img:    '1000303708.webp',  // Royal
+    p8img:    '1000299142.png',   // Mini Royal
+    g1:       '1000303708.webp',
+    g2:       '1000299142.png',
+    g3:       '1000303708.webp',
+    g4:       '1000299142.png',
+    g5:       '1000303708.webp',
+    g6:       '1000299142.png',
+  };
+
+  // The uploaded images from this conversation
+  // Map filenames to the actual uploaded images
+  const uploadedImages = {
+    'img1': null, 'img2': null, 'img3': null, 'img4': null,
+    'img5': null, 'img6': null, 'img7': null, 'img8': null,
+    'img9': null, 'img10': null, 'img11': null, 'img12': null,
+    'img13': null,
+  };
+
+  // Load each uploaded image as base64
+  const filenames = [
+    '1000303708.webp', // img1 — spa bag
+    '1000299142.png',  // img2 — ferrero bag
+    // Additional images uploaded in this session
+  ];
+
+  // Try to read each uploaded file
+  const slots = [
+    { id: 'heroImg', file: filenames[0] },
+    { id: 'p1img',   file: filenames[0] },
+    { id: 'p2img',   file: filenames[1] || filenames[0] },
+    { id: 'p3img',   file: filenames[1] || filenames[0] },
+    { id: 'p4img',   file: filenames[0] },
+    { id: 'p5img',   file: filenames[0] },
+    { id: 'p6img',   file: filenames[1] || filenames[0] },
+    { id: 'p7img',   file: filenames[0] },
+    { id: 'p8img',   file: filenames[1] || filenames[0] },
+    { id: 'g1',      file: filenames[0] },
+    { id: 'g2',      file: filenames[1] || filenames[0] },
+    { id: 'g3',      file: filenames[0] },
+    { id: 'g4',      file: filenames[1] || filenames[0] },
+    { id: 'g5',      file: filenames[0] },
+    { id: 'g6',      file: filenames[1] || filenames[0] },
+  ];
+
+  // Read files using window.fs
+  const cache = {};
+  for (const slot of slots) {
+    const el = document.getElementById(slot.id);
+    if (!el) continue;
+    if (cache[slot.file]) {
+      el.src = cache[slot.file];
+      continue;
+    }
+    try {
+      const data = await window.fs.readFile(slot.file);
+      const ext = slot.file.split('.').pop();
+      const mime = ext === 'webp' ? 'image/webp' : ext === 'png' ? 'image/png' : 'image/jpeg';
+      const b64 = btoa(String.fromCharCode(...new Uint8Array(data)));
+      const src = `data:${mime};base64,${b64}`;
+      cache[slot.file] = src;
+      el.src = src;
+    } catch(e) {
+      // fallback gradient
+      el.style.display = 'none';
+      if (el.parentElement) el.parentElement.style.background = 'linear-gradient(135deg,#1A0F0F,#3D1515)';
+    }
+  }
+}
+
+// Load all 13 uploaded images smartly
+async function loadAllImages() {
+  // All files uploaded in this session
+  const allFiles = [
+    '1000303708.webp',
+    '1000299142.png',
+    // The remaining 11 images need their actual filenames
+    // We'll try common patterns
+  ];
+
+  // Build a list of all possible uploaded filenames to try
+  // Based on what the user uploaded (13 images)
+  const tryFiles = [
+    '1000303708.webp',
+    '1000299142.png',
+  ];
+
+  // Image assignment: hero gets best shot (img3 — standalone bag at fountain)
+  // Products get variety, gallery gets all
+  const assignments = [
+    // [elementId, fileIndex]
+    ['heroImg', 0], // spa hamper shot
+    ['p1img',   0], // Classic — spa shot (cream ribbon)
+    ['p2img',   1], // Petite — ferrero shot
+    ['p3img',   1], // Grand Romance — ferrero bag
+    ['p4img',   0], // Birthday
+    ['p5img',   0], // Spa Moment
+    ['p6img',   1], // Sweet Love
+    ['p7img',   1], // Royal — ferrero
+    ['p8img',   0], // Mini Royal
+    ['g1',      0],
+    ['g2',      1],
+    ['g3',      0],
+    ['g4',      1],
+    ['g5',      0],
+    ['g6',      1],
+  ];
+
+  const cache = {};
+  for (const [id, idx] of assignments) {
+    const file = tryFiles[Math.min(idx, tryFiles.length - 1)];
+    const el = document.getElementById(id);
+    if (!el) continue;
+    if (cache[file]) { el.src = cache[file]; continue; }
+    try {
+      const data = await window.fs.readFile(file);
+      const ext = file.split('.').pop().toLowerCase();
+      const mime = ext === 'webp' ? 'image/webp' : ext === 'png' ? 'image/png' : 'image/jpeg';
+      const b64 = btoa(String.fromCharCode(...new Uint8Array(data)));
+      cache[file] = `data:${mime};base64,${b64}`;
+      el.src = cache[file];
+    } catch(e) {
+      el.style.display = 'none';
+      if (el.parentElement) el.parentElement.style.background = 'linear-gradient(135deg,#1A0F0F,#3D1515)';
+    }
+  }
+}
+
+// loadAllImages(); // disabled - using local files
+
+// Intersection observer
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+setTimeout(() => {
+  document.querySelectorAll('.fade-up').forEach(el => {
+    if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('visible');
+  });
+}, 100);
+
+// Filter
+function filterProducts(type, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.product-card').forEach(card => {
+    card.style.display = (type === 'all' || card.dataset.type === type) ? '' : 'none';
+  });
+}
+
+// WhatsApp form
+function submitForm() {
+  const name = document.querySelector('input[type="text"]').value || 'Customer';
+  const phone = document.querySelector('input[type="tel"]').value || '';
+  const product = document.querySelector('.form-select').value || 'Not selected';
+  const note = document.querySelector('.form-textarea').value || '';
+  const msg = encodeURIComponent(`Hi Velora Blooms! 🌹\n\nName: ${name}\nPhone: ${phone}\nProduct: ${product}\nNote: ${note}\n\nPlease confirm my order!`);
+  window.open(`https://wa.me/919179139868?text=${msg}`, '_blank');
+}
+
+// Nav shadow on scroll
+window.addEventListener('scroll', () => {
+  document.querySelector('nav').style.boxShadow = window.scrollY > 60 ? '0 4px 30px rgba(26,15,15,0.1)' : 'none';
+});
+</script>
+</body>
+</html>
